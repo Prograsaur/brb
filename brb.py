@@ -11,13 +11,17 @@ Interactive Brokers TWS API -- "The Big Red Button" - one button to cancel all o
 import sys
 import multiprocessing as mp
 import queue
+import logging
 
 from gui import runGui
+from logutils import init_logger
 #endregion import
 
 #region main
 #-------------------------------------------------------------------------------
 def main():
+    init_logger('brb')
+
     q = mp.Queue()
 
     # Interactive Brokers TWS API has its own infinite message loop and
@@ -28,10 +32,13 @@ def main():
     gui = mp.Process(target=runGui, args=(q,))
     gui.start()
 
+    logging.info('The Big Red Button started')
+
     active = True
     while active:
         try:
             msg = q.get(True, 0.2)
+            logging.debug(f'Message from GUI: {msg}')
             if msg == 'EXIT':
                 active = False
             elif msg == 'BRB':
@@ -39,6 +46,9 @@ def main():
         except queue.Empty:
             pass
     gui.join()
+    logging.info('The Big Red Button stopped')
+
+    return 0
 
 if __name__ == "__main__":
     sys.exit(main())
