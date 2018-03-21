@@ -20,6 +20,11 @@ from gui import runGui
 def main():
     q = mp.Queue()
 
+    # Interactive Brokers TWS API has its own infinite message loop and
+    # at least one additional thread.
+    # Tkinter from its side “doesn’t like” treads and has infinite loop too.
+    #
+    # To resolve this issue each component will run in the separate process:
     gui = mp.Process(target=runGui, args=(q,))
     gui.start()
 
