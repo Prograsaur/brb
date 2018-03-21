@@ -15,12 +15,13 @@ import logging
 
 from gui import runGui
 from logutils import init_logger
+from config import config
 #endregion import
 
 #region main
 #-------------------------------------------------------------------------------
 def main():
-    init_logger('brb')
+    init_logger('brb', logpath=config.logpath, loglevel=config.loglevel)
 
     q = mp.Queue()
 
