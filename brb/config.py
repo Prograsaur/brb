@@ -15,5 +15,10 @@ class Config: pass
 
 config = Config()
 
+# Logging
 config.logpath = 'log'
 config.loglevel = logging.INFO
+
+# TWS Connection
+config.twsport = 7497
+config.clientId = 0
