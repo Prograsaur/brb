@@ -17,6 +17,10 @@ In the TWS window:
 - Master API client ID: 0
 - [x] Allow connections from the localhost only
 
+## The Big Red Button configuration
+
+Edit config.py file directly to change the configuration.
+
 ## Interactive Brokers Client class
 
 Client has to check not just messages from the TWS but messages from the GUI as well.
