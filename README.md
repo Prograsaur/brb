@@ -3,6 +3,8 @@ Interactive Brokers TWS API usage example -- one button to cancel all orders and
 
 TWS API Guide http://interactivebrokers.github.io/tws-api/#gsc.tab=0
 
+## Interactive Brokers Trader Workstation configuration
+
 To allow connection between your application and TWS you have to set several options in the TWS configuration:
 
 In the TWS window:
